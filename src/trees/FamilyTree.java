@@ -31,7 +31,7 @@ public class FamilyTree
         
         void addChild(TreeNode childNode)
         {
-            this.addChild(childNode);// Add childNode to this node's children list. Also
+            this.children.add(childNode);// Add childNode to this node's children list. Also
             childNode.parent = this;// set childNode's parent to this node.
         }
         
@@ -71,7 +71,7 @@ public class FamilyTree
             // recent to ancient. Expect a question about this on the final exam.
             TreeNode ancestor = this.parent;
             
-            while(ancestor.parent != null) {
+            while(ancestor != null) {
             	ancestors.add(ancestor);
             	ancestor = ancestor.parent;
             }
@@ -137,7 +137,7 @@ public class FamilyTree
 		// Extract parent and array of children.
 		int colonIndex = line.indexOf(":"); //should be the index of the colon in line.
 		if (colonIndex < 0)
-			throw new TreeException(" with a useful message ");
+			throw new TreeException("colon not found in line");
 		String parent = line.substring(0, colonIndex);// The substring of line that starts at char #0 and ends just before colonIndex. Check the API for 
 				           //class java.util.String, method substring(), if you need guidance.
 		String childrenString = line.substring(colonIndex + 1);//The substring of line that starts just after colonIndex and goes through the end of
@@ -161,8 +161,8 @@ public class FamilyTree
 		// Add child nodes to parentNode.
 		//?? For each name in childrenArray, create a new node and add that node to parentNode.
 		for(String child: childrenArray) {
-			
-			
+			TreeNode childNode = new TreeNode(child);
+			parentNode.addChild(childNode);
 		}
 	}
 	
