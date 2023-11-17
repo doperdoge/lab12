@@ -41,7 +41,7 @@ public class FamilyTree
         TreeNode getNodeWithName(String targetName)
         {
             // Does this node have the target name?
-            if (?????)
+            if (this.getName().equals(targetName))
                 return this;
                     
             // No, recurse. Check all children of this node.
@@ -109,8 +109,8 @@ public class FamilyTree
 
 		// Parse the input file. Create a FileReader that reads treeFile. Create a BufferedReader
 		// that reads from the FileReader.
-		FileReader fr = ???
-		BufferedReader br = ???
+		FileReader fr = new FileReader(treeFile);
+		BufferedReader br = new BufferedReader(fr);
 		String line;
 		while ((line = br.readLine()) != null)
 			addLine(line);
@@ -126,7 +126,7 @@ public class FamilyTree
 	private void addLine(String line) throws TreeException
 	{
 		// Extract parent and array of children.
-		int colonIndex = ?? should be the index of the colon in line.
+		int colonIndex = line.indexOf(":"); //should be the index of the colon in line.
 		if (colonIndex < 0)
 			?? throw a TreeException with a useful message
 		String parent = ?? The substring of line that starts at char #0 and ends just before colonIndex. Check the API for 
